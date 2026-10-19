@@ -1,4 +1,4 @@
-<!doctype html><html lang="hi"><head><meta charset="utf-8">
+<!doctype html><html lang="hi" translate="no" class="notranslate"><head><meta charset="utf-8"><meta name="google" content="notranslate">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>आपके नाम से कन्या पूजन — फ़ोटो/वीडियो प्रमाण के साथ | Be Sanatan</title>
 <meta name="description" content="नवरात्रि में कन्या पूजन नहीं कर पा रहे? Be Sanatan आपके नाम व गोत्र से विधि-विधान से कन्या पूजन व भोजन करवाता है और फ़ोटो-वीडियो प्रमाण आपके नंबर पर भेजता है। Book Kanya Pujan in your name with photo/video proof.">
@@ -39,7 +39,7 @@ section{padding:26px 0}
 /* booking */
 #book{background:linear-gradient(#fff3d6,var(--cream))}
 .prog{display:flex;justify-content:space-between;margin:6px 0 16px;counter-reset:s}
-.prog div{flex:1;text-align:center;font-size:12.5px;color:#9b7b52;position:relative}
+.prog div{flex:1;min-width:0;overflow-wrap:anywhere;line-height:1.25;text-align:center;font-size:12.5px;color:#9b7b52;position:relative}
 .prog div:before{counter-increment:s;content:counter(s);display:flex;width:30px;height:30px;margin:0 auto 3px;border-radius:50%;background:#ead7ad;color:#7a5a30;align-items:center;justify-content:center;font-weight:700;position:relative;z-index:1}
 .prog div:after{content:"";position:absolute;top:15px;left:-50%;width:100%;height:3px;background:#ead7ad}
 .prog div:first-child:after{display:none}
@@ -56,11 +56,12 @@ input.i:focus,textarea.i:focus{outline:2px solid var(--saf);border-color:var(--s
 .hint{font-size:13px;color:#7a6040}
 .amt{text-align:center;font-size:15px}.amt b{display:block;font-size:34px;color:var(--saf)}
 .qr{display:block;width:100%;max-width:280px;margin:10px auto;border:4px solid var(--gold2);border-radius:10px;background:#fff}
-.nav{display:flex;gap:10px;margin-top:16px}.nav .btn{flex:1}
+.nav{display:flex;gap:10px;margin-top:16px;align-items:stretch}.nav .btn{flex:1 1 0;min-width:0;width:auto;min-height:48px;padding:10px 14px;font-size:16px;line-height:1.25;border-radius:28px;display:flex;align-items:center;justify-content:center;overflow-wrap:anywhere}.nav #back{flex:0 0 auto;max-width:38%}
+@media(max-width:359px){.nav{flex-direction:column-reverse}.nav #back{max-width:none}}
 .err{color:#b00020;font-size:15px;min-height:1em;margin:8px 0 0}
-#preview{display:none;max-width:180px;margin:10px auto 0;border:2px solid var(--gold2);border-radius:6px}
-.up{border:2px dashed var(--saf);border-radius:12px;padding:16px;text-align:center;background:#fffaf0}
-.sum{background:#fff8e6;border:1px dashed var(--gold);border-radius:8px;padding:8px 12px;font-size:15px;margin-bottom:10px}
+#preview{display:none;max-width:180px;width:100%;height:auto;margin:10px auto 0;border:2px solid var(--gold2);border-radius:6px}
+.up{display:block;width:100%;min-height:120px;border:2px dashed var(--saf);border-radius:12px;padding:16px;text-align:center;background:#fffaf0;cursor:pointer;overflow-wrap:anywhere;line-height:1.45;margin:4px 0 0}.up b{display:block;font-size:17px;color:var(--mar)}.up .hint{display:block;margin-top:4px}
+.sum{display:block;overflow-wrap:anywhere;line-height:1.45;background:#fff8e6;border:1px dashed var(--gold);border-radius:8px;padding:8px 12px;font-size:15px;margin-bottom:10px}
 .hide{display:none!important}
 details{background:#fff;border:1px solid #efd9a5;border-radius:10px;padding:10px 14px;margin:8px 0}summary{font-weight:700;color:var(--mar);cursor:pointer}
 .thanks{text-align:center}.thanks .ref{font-size:26px;color:var(--saf);font-weight:700;letter-spacing:1px}
@@ -98,11 +99,11 @@ details{background:#fff;border:1px solid #efd9a5;border-radius:10px;padding:10px
 <ul><li><b>सात्विक भोजन:</b> पूरी, सूजी का हलवा, काला चना</li><li><b>लाल चुनरी</b> व <b>दक्षिणा</b></li><li><b>पूजन:</b> तिलक, चरण वंदन, आशीर्वाद</li><li><b>प्रमाण:</b> फ़ोटो/वीडियो आपके नंबर पर</li></ul></div></section>
 
 <section id="book"><div class="wrap">
-<h2>अपना कन्या पूजन बुक करें</h2>
+<h2>अपना कन्या पूजन बुक करें <small style="display:block;font-size:14px;color:#7a6040;font-family:Mukta,sans-serif">Book Kanya Pujan</small></h2>
 <div class="prog" id="prog"><div class="on">पैकेज</div><div>विवरण</div><div>भुगतान</div><div>स्क्रीनशॉट</div></div>
 <form id="lf" class="panel" novalidate>
  <div data-step="1">
-  <h3>१. कितनी कन्याओं का पूजन?</h3>
+  <h3>१. कितनी कन्याओं का पूजन? <small style="font-size:13px;color:#7a6040;font-family:Mukta,sans-serif">(Kanya Pujan package)</small></h3>
   <div id="pkgs"></div>
   <p class="hint">लगभग ₹500 प्रति कन्या — भोजन, चुनरी, दक्षिणा व प्रमाण सहित।</p>
  </div>
@@ -126,7 +127,7 @@ details{background:#fff;border:1px solid #efd9a5;border-radius:10px;padding:10px
  <div data-step="4" class="hide">
   <h3>४. भुगतान का स्क्रीनशॉट अपलोड करें</h3>
   <div class="sum" id="sum4"></div>
-  <label class="up" for="shot"><b>📤 यहाँ टैप करके स्क्रीनशॉट चुनें</b><br><span class="hint">केवल फ़ोटो (image), 5MB तक</span><input id="shot" type="file" accept="image/*" class="hide"><img id="preview" alt="स्क्रीनशॉट"></label>
+  <label class="up" for="shot"><b>📤 यहाँ टैप करके स्क्रीनशॉट चुनें</b><span class="hint">केवल फ़ोटो (image), 5MB तक</span><input id="shot" type="file" accept="image/*" class="hide"><img id="preview" alt="स्क्रीनशॉट"></label>
   <p class="hint">सबमिट करते ही आपको बुकिंग संदर्भ संख्या मिलेगी। भुगतान सत्यापन के बाद सेवा आपके नाम से की जाएगी।</p>
  </div>
  <p class="err" id="err" role="alert"></p>
