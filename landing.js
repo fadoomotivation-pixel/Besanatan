@@ -1,4 +1,5 @@
 (function(){
+const px=(...a)=>{try{if(window.fbq)window.fbq(...a);}catch(e){}};
 const C=window.BS_CONFIG,$=s=>document.querySelector(s),inr=n=>"₹"+Number(n).toLocaleString("en-IN");
 const P=[...C.KANYA_PACKAGES].sort((a,b)=>b.qty-a.qty);let sel=C.KANYA_PACKAGES.find(p=>p.badge)||P[0],step=1;
 $("#pkgs").innerHTML=P.map(p=>`<label class="pk${p.id===sel.id?" sel":""}" data-id="${p.id}">${p.badge?`<span class="bd">⭐ सबसे लोकप्रिय · नवरात्रि</span>`:""}<input type="radio" name="pk" value="${p.id}"${p.id===sel.id?" checked":""}><div class="row"><span class="q">${p.qty} कन्या पूजन<small style="display:block;font-weight:400">${p.qty} Kanya Pujan</small></span><span class="p">${inr(p.price)}</span></div><small>भोजन + चुनरी + दक्षिणा + फ़ोटो/वीडियो प्रमाण</small></label>`).join("");
@@ -7,7 +8,10 @@ function upd(){document.querySelectorAll(".pk").forEach(l=>l.classList.toggle("s
 $("#pkgs").addEventListener("change",e=>{sel=C.KANYA_PACKAGES.find(p=>p.id===e.target.value);upd();});upd();
 const err=t=>$("#err").textContent=t||"";
 const phone=()=>{let p=$("#phone").value.replace(/\D/g,"");if(p.length===12&&p.startsWith("91"))p=p.slice(2);if(p.length===11&&p.startsWith("0"))p=p.slice(1);return p;};
-function show(n){step=n;document.querySelectorAll("[data-step]").forEach(d=>d.classList.toggle("hide",+d.dataset.step!==n));
+function show(n){const prev=step;step=n;
+ if(prev===1&&n===2&&!window.__bsIC&&(window.__bsIC=1))px("track","InitiateCheckout",{value:sel.price,currency:"INR",content_name:sel.qty+" कन्या पूजन",num_items:sel.qty});
+ if(n===3&&prev===2&&!window.__bsAPI&&(window.__bsAPI=1))px("track","AddPaymentInfo",{value:sel.price,currency:"INR",content_name:sel.qty+" कन्या पूजन"});
+document.querySelectorAll("[data-step]").forEach(d=>d.classList.toggle("hide",+d.dataset.step!==n));
  document.querySelectorAll("#prog div").forEach((d,i)=>d.classList.toggle("on",i<n));$("#back").classList.toggle("hide",n===1);
  $("#next").textContent=n===3?"✅ भुगतान हो गया →":n===4?"🙏 बुकिंग पूरी करें":"आगे बढ़ें →";err();
  if(n>=3)loadSb().catch(()=>{sbMod=null;});
@@ -33,8 +37,10 @@ async function submit(){const fl=$("#shot").files[0];
   const ins=await sb.from("bs_bookings").insert({booking_ref:ref,seva:"कन्या भोजन / Kanya Bhojan",package:sel.qty+" कन्या पूजन",quantity:sel.qty,amount:sel.price,sankalp_name:$("#name").value.trim(),gotra:$("#gotra").value.trim()||null,phone:phone(),preferred_date:$("#date").value||null,message:(($("#msg").value.trim()||"")+" [landing:kanya-pujan]").trim(),screenshot_path:path});
   if(ins.error)throw{hi:"बुकिंग सहेजी नहीं जा सकी, कृपया दोबारा प्रयास करें।"};
  }catch(x){if(!(x&&x.hi))sbMod=null;err((x&&x.hi)||"नेटवर्क समस्या — कृपया दोबारा प्रयास करें।");b.disabled=false;b.textContent="🙏 बुकिंग पूरी करें";return;}
+ px("track","Purchase",{value:sel.price,currency:"INR",content_name:sel.qty+" कन्या पूजन",content_type:"product",num_items:sel.qty},{eventID:ref});
  $("#lf").classList.add("hide");$("#prog").classList.add("hide");$("#thanks").classList.remove("hide");$("#ref").textContent=ref;$("#tsum").textContent=lbl()+" · संकल्प: "+$("#name").value.trim();
  $("#sticky").classList.add("off");$("#book").scrollIntoView({block:"start"});window.bsBooked=ref;}
 // sticky CTA hides while booking section is on screen
 const st=$("#sticky");new IntersectionObserver(es=>es.forEach(e=>st.classList.toggle("off",e.isIntersecting||!!window.bsBooked)),{threshold:.05}).observe($("#book"));
+px("track","ViewContent",{content_name:"Kanya Pujan",content_category:"Kanya Pujan",value:sel.price,currency:"INR"});
 })();

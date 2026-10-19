@@ -36,6 +36,7 @@ const row={booking_ref:ref,seva:seva.options[seva.selectedIndex].text,package:la
 const ins=await sb.from("bs_bookings").insert(row);
 if(ins.error)throw {hi:"बुकिंग सहेजी नहीं जा सकी, कृपया दोबारा प्रयास करें / Booking could not be saved, please retry."};
 }catch(x){er.textContent=(x&&x.hi)||"नेटवर्क समस्या, कृपया दोबारा प्रयास करें / Network error, please retry.";btn.disabled=false;btn.textContent="बुकिंग भेजें / Submit Booking";return;}
+try{window.fbq&&fbq("track","Purchase",{value:t,currency:"INR",content_name:label,content_type:"product",num_items:(seva.value==="kanya"?C.KANYA_PACKAGES.find(x=>x.id===pkg.value).qty:Math.max(1,parseInt(qty.value)||1))},{eventID:ref});}catch(e){}
 f.classList.add("hidden");$("#payBox").classList.add("hidden");$("#thanks").classList.remove("hidden");
 $("#ref").textContent=ref;$("#tSum").textContent=label+" · "+inr(t);scrollTo(0,0);});
 })();
