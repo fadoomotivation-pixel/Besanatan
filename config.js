@@ -4,7 +4,7 @@ window.BS_CONFIG = {
   PHONE_DISPLAY: "+91 XXXXX XXXXX",     // TODO
   EMAIL: "TODO@example.com",            // TODO
   ADDRESS: "पता यहाँ लिखें / Address to be added", // TODO
-  WEB3FORMS_KEY: "",                    // TODO (optional): free key from web3forms.com
+  WEB3FORMS_KEY: "d18e272b-82b9-443e-b9fb-1e81052fcb8c",                    // TODO (optional): free key from web3forms.com
   UPI_QR: "assets/upi-qr.jpg",
   KANYA_INCLUDES: "भोजन (पूरी, हलवा, चना), चुनरी + दक्षिणा, फ़ोटो-वीडियो प्रमाण",
   KANYA_PACKAGES: [
