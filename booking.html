@@ -1,0 +1,32 @@
+<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:site_name" content="Be Sanatan"><meta property="og:type" content="website"><meta property="og:image" content="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<title>सेवा बुकिंग | Book Seva — Be Sanatan</title>
+<meta name="description" content="कन्या भोजन व दान सेवा बुक करें — UPI QR से भुगतान, स्क्रीनशॉट अपलोड। Book Kanya Bhojan & seva online.">
+<meta property="og:title" content="सेवा बुक करें — Be Sanatan"><meta property="og:description" content="आपके नाम से सेवा, फ़ोटो-वीडियो प्रमाण सहित।">
+</head><body><div class="shloka">॥ यत्र नार्यस्तु पूज्यन्ते रमन्ते तत्र देवताः ॥</div>
+<header><a href="index.html"><img src="logo.svg" alt="Be Sanatan"></a><nav><a href="index.html#kanya">कन्या भोजन</a><a href="index.html#seva">सेवाएँ</a><a href="index.html#faq">प्रश्न</a><a href="booking.html">बुकिंग</a></nav></header>
+<section class="wrap" style="max-width:640px"><h1 style="text-align:center">सेवा बुकिंग <span class="en">Book Seva</span></h1><div class="divider">❁ 🪔 ❁</div>
+<div id="devNotice" class="notice hidden"><b>Owner notice (dev only):</b> WEB3FORMS_KEY config.js में खाली है — बुकिंग कहीं नहीं भेजी जाएगी, केवल धन्यवाद पेज दिखेगा। Set WEB3FORMS_KEY in config.js to receive bookings by email.</div>
+<form id="bookForm" novalidate>
+<label>सेवा चुनें / Seva</label><select id="seva"></select>
+<div id="pkgWrap"><label>पैकेज / Package</label><select id="pkg"></select></div>
+<div id="qtyWrap" class="hidden"><label>संख्या / Quantity</label><input id="qty" type="number" min="1" value="1"><div id="unit" class="en"></div></div>
+<div class="total">कुल राशि / Total: <span id="total"></span></div>
+<label>संकल्प का नाम * / Sankalp name</label><input id="name" required placeholder="जिनके नाम से सेवा हो">
+<label>गोत्र (वैकल्पिक) / Gotra</label><input id="gotra">
+<label>मोबाइल नंबर * / Mobile (10-digit)</label><input id="phone" type="tel" inputmode="numeric" maxlength="13" required placeholder="98XXXXXXXX">
+<label>इच्छित तिथि / Preferred date</label><input id="date" type="date">
+<label>संदेश / Message</label><textarea id="msg" rows="3" placeholder="विशेष निवेदन (यदि कोई हो)"></textarea>
+<div id="payBox" style="text-align:center;margin-top:18px;padding:14px;border:2px solid var(--gold2);border-radius:10px;background:#fffaf0">
+<h3>भुगतान करें: <span id="payAmt"></span></h3><img id="qrimg" class="qr" alt="UPI QR code"><p class="en">Scan with any UPI app, pay the exact amount, then upload the success screenshot.</p></div>
+<label>भुगतान सफल स्क्रीनशॉट * / Payment screenshot</label><input id="shot" type="file" accept="image/*" required><img id="preview" alt="preview">
+<p id="formErr" class="err"></p>
+<button class="btn" id="submitBtn" type="submit" style="width:100%;margin-top:10px">बुकिंग भेजें / Submit Booking</button>
+</form>
+<div id="thanks" class="hidden card" style="margin-top:20px"><div class="step">🙏</div><h2>धन्यवाद! बुकिंग प्राप्त हुई</h2><p>बुकिंग संदर्भ / Booking Ref:<br><b id="ref" style="font-size:24px;color:var(--saf)"></b></p><p id="tSum"></p><p>भुगतान सत्यापन के बाद सेवा आपके नाम से की जाएगी और फ़ोटो-वीडियो प्रमाण आपके दिए नंबर पर भेजा जाएगा। कृपया यह संदर्भ संख्या संभाल कर रखें।</p><p class="en">After payment verification, the seva will be performed in your name and proof sent to your number.</p><a class="btn alt" href="index.html">मुख्य पृष्ठ</a></div>
+</section>
+<footer><img src="logo.svg" alt="" style="height:70px;filter:brightness(1.6)"><p>॥ सेवा परमो धर्मः ॥</p><p>📞 <span data-cfg="PHONE_DISPLAY"></span> · ✉️ <span data-cfg="EMAIL"></span><br>📍 <span data-cfg="ADDRESS"></span></p><p>© Be Sanatan. सभी सेवाएँ श्रद्धा भाव से की जाती हैं; किसी फल की गारंटी नहीं दी जाती।</p></footer>
+<script src="config.js"></script><script src="app.js"></script></body></html>
