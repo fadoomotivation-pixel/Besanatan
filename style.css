@@ -34,3 +34,8 @@ input,select,textarea{width:100%;padding:10px;border:1px solid var(--gold);borde
 .err{color:#b00020;font-size:14px}.notice{background:#fff0c2;border:2px dashed var(--saf);padding:10px;border-radius:8px;margin:10px 0}
 .hidden{display:none}
 @media(max-width:600px){nav a{margin-left:8px;font-size:13px}header img{height:44px}}
+.hero img.durga{width:260px;max-width:80%;filter:drop-shadow(0 4px 10px rgba(122,31,31,.25))}
+.jai{font-family:'Tiro Devanagari Hindi',serif;color:var(--saf);font-size:20px;margin:0}
+header img{height:84px}
+@media(max-width:600px){header{flex-direction:column;padding:6px}header img{height:96px}nav{display:flex;flex-wrap:wrap;justify-content:center}nav a{margin:0 8px;font-size:15px}}
+.brand{display:flex;flex-direction:column;align-items:center;text-decoration:none}.brand .tag{font-family:'Tiro Devanagari Hindi',serif;color:var(--gold);font-size:15px;font-weight:700;margin-top:-4px}
