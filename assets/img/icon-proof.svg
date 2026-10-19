@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="48" height="48" fill="none">
+  <circle cx="32" cy="32" r="30" fill="#FFF9ED" stroke="#C9A227" stroke-width="2"/>
+  <!-- Camera body -->
+  <rect x="16" y="24" width="32" height="24" rx="4" fill="#7A1E1E" stroke="#C9A227" stroke-width="1.5"/>
+  <path d="M25 24 L27 19 L37 19 L39 24 Z" fill="#7A1E1E" stroke="#C9A227" stroke-width="1.5"/>
+  <!-- Lens with reflection -->
+  <circle cx="32" cy="36" r="8" fill="#3B1E10" stroke="#C9A227" stroke-width="1.5"/>
+  <circle cx="32" cy="36" r="5" fill="#E8871E"/>
+  <circle cx="30" cy="34" r="1.5" fill="#FFFFFF"/>
+  <!-- Green / Gold Verified Proof Badge -->
+  <circle cx="44" cy="22" r="7" fill="#2E7D32" stroke="#C9A227" stroke-width="1.5"/>
+  <path d="M41 22 L43 24 L47 19" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

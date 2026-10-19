@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="48" height="48" fill="none">
+  <circle cx="32" cy="32" r="30" fill="#FFF9ED" stroke="#C9A227" stroke-width="2"/>
+  <!-- Kalash with coconut and mango leaves -->
+  <path d="M22 46 C22 52, 42 52, 42 46 L40 32 C40 28, 24 28, 24 32 Z" fill="#7A1E1E" stroke="#C9A227" stroke-width="1.5"/>
+  <ellipse cx="32" cy="30" rx="10" ry="3" fill="#E8871E" stroke="#C9A227" stroke-width="1.5"/>
+  <!-- Leaves -->
+  <path d="M25 29 Q16 22 20 16 Q26 22 27 29 Z" fill="#2E7D32" stroke="#1B5E20" stroke-width="1"/>
+  <path d="M39 29 Q48 22 44 16 Q38 22 37 29 Z" fill="#2E7D32" stroke="#1B5E20" stroke-width="1"/>
+  <path d="M32 29 Q32 18 32 14 Q34 22 32 29 Z" fill="#2E7D32" stroke="#1B5E20" stroke-width="1"/>
+  <!-- Coconut -->
+  <ellipse cx="32" cy="24" rx="6" ry="7" fill="#8D5B3A" stroke="#C9A227" stroke-width="1.2"/>
+  <!-- Swastika / Tilak mark on Kalash -->
+  <circle cx="32" cy="40" r="3" fill="#C9A227"/>
+  <path d="M30 40 L34 40 M32 38 L32 42" stroke="#FFF" stroke-width="1.2"/>
+</svg>
