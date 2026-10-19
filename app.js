@@ -25,11 +25,12 @@ if(!$("#name").value.trim()){er.textContent="संकल्प नाम आव
 const fl=$("#shot").files[0];if(!fl||!fl.type.startsWith("image/")){er.textContent="भुगतान का स्क्रीनशॉट (image) अपलोड करें / Upload payment screenshot";return;}
 const {t,label}=calc(),d=new Date(),ref="BS-"+String(d.getFullYear()).slice(2)+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0")+"-"+Math.random().toString(36).slice(2,6).toUpperCase();
 const btn=$("#submitBtn");btn.disabled=true;btn.textContent="भेजा जा रहा है…";
-if(C.WEB3FORMS_KEY){const fd=new FormData();
-Object.entries({access_key:C.WEB3FORMS_KEY,subject:"नई बुकिंग "+ref+" — "+label,from_name:"Be Sanatan Website",booking_ref:ref,name:$("#name").value,phone:ph,gotra:$("#gotra").value,seva:seva.options[seva.selectedIndex].text,package:label,amount:inr(t),date:$("#date").value,message:$("#msg").value}).forEach(([k,v])=>fd.append(k,v));
-fd.append("attachment",fl);
-try{const r=await fetch("https://api.web3forms.com/submit",{method:"POST",body:fd});const j=await r.json();if(!j.success)throw 0;}
-catch(x){er.textContent="भेजने में समस्या हुई, कृपया दोबारा प्रयास करें / Submission failed, please retry.";btn.disabled=false;btn.textContent="बुकिंग भेजें";return;}}
+let noAttach=false;
+if(C.WEB3FORMS_KEY){const base={access_key:C.WEB3FORMS_KEY,subject:"नई बुकिंग "+ref+" — "+label,from_name:"Be Sanatan Website",booking_ref:ref,name:$("#name").value,phone:ph,gotra:$("#gotra").value,seva:seva.options[seva.selectedIndex].text,package:label,amount:inr(t),date:$("#date").value,message:$("#msg").value};
+const send=async(withFile)=>{const fd=new FormData();Object.entries(base).forEach(([k,v])=>fd.append(k,v));if(withFile)fd.append("attachment",fl);else fd.append("screenshot_note","Screenshot not attached (upload failed) — ask customer to share it");const r=await fetch("https://api.web3forms.com/submit",{method:"POST",body:fd});return r.json();};
+let ok=false;try{ok=(await send(true)).success;}catch(x){}
+if(!ok){try{ok=(await send(false)).success;noAttach=ok;}catch(x){}}
+if(!ok){er.textContent="भेजने में समस्या हुई, कृपया दोबारा प्रयास करें / Submission failed, please retry.";btn.disabled=false;btn.textContent="बुकिंग भेजें";return;}}
 f.classList.add("hidden");$("#payBox").classList.add("hidden");$("#thanks").classList.remove("hidden");
-$("#ref").textContent=ref;$("#tSum").textContent=label+" · "+inr(t);scrollTo(0,0);});
+$("#ref").textContent=ref;$("#tSum").textContent=label+" · "+inr(t);$("#keepShot").classList.toggle("hidden",!noAttach);scrollTo(0,0);});
 })();

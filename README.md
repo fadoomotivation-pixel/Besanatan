@@ -23,7 +23,7 @@ Static booking site for Kanya Bhojan & Hindu daan/seva performed in the devotee'
 
 ## बुकिंग कैसे पहुँचती है / How bookings arrive
 फ़ॉर्म सबमिट होने पर (name, phone, gotra, seva, package, amount, date, message, booking ref + screenshot) Web3Forms को multipart POST होता है और आपके ईमेल पर आता है। प्रमाण ग्राहक के दिए नंबर/ईमेल पर भेजें।
-Note: Web3Forms file attachments may need their paid plan; check web3forms.com. If key is empty, a dev-only notice shows on localhost and the thank-you page still appears.
+Note: Web3Forms free plan does NOT accept file uploads (Pro feature). The site tries with the screenshot first; if rejected it sends details only and asks the customer (in Hindi) to keep the screenshot. Upgrade Web3Forms to Pro to receive screenshots.
 
 ## मुफ़्त डिप्लॉय / Free deploy
 - **Netlify:** app.netlify.com/drop पर फ़ोल्डर/ZIP drag-drop करें।
