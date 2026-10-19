@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 440" role="img" aria-label="माँ दुर्गा / Maa Durga">
+<defs>
+<radialGradient id="halo" cx=".5" cy=".42" r=".5"><stop offset="0" stop-color="#FFE9A8"/><stop offset=".6" stop-color="#F7B733" stop-opacity=".55"/><stop offset="1" stop-color="#E8790C" stop-opacity="0"/></radialGradient>
+<linearGradient id="gd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBE08A"/><stop offset="1" stop-color="#B8860B"/></linearGradient>
+<linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6C99A"/><stop offset="1" stop-color="#E7A873"/></linearGradient>
+</defs>
+<circle cx="200" cy="185" r="175" fill="url(#halo)"/>
+<g stroke="url(#gd)" stroke-width="2" opacity=".7">
+<line x1="200" y1="10" x2="200" y2="40"/><line x1="76" y1="62" x2="97" y2="83"/><line x1="324" y1="62" x2="303" y2="83"/><line x1="25" y1="185" x2="55" y2="185"/><line x1="375" y1="185" x2="345" y2="185"/></g>
+<!-- trishul -->
+<g fill="url(#gd)"><rect x="336" y="70" width="7" height="290" rx="3"/>
+<path d="M339 30 L348 70 L330 70Z"/><path d="M312 48 Q316 82 339 82 Q362 82 366 48 Q360 72 339 72 Q318 72 312 48Z"/><circle cx="339" cy="95" r="7" fill="#7A1F1F"/></g>
+<!-- hair -->
+<path d="M120 190 Q115 95 200 85 Q285 95 280 190 L300 330 Q200 360 100 330Z" fill="#2B1610"/>
+<!-- face -->
+<ellipse cx="200" cy="190" rx="68" ry="82" fill="url(#sk)"/>
+<!-- mukut -->
+<path d="M128 140 L140 85 L160 115 L178 62 L200 100 L222 62 L240 115 L260 85 L272 140 Q200 120 128 140Z" fill="url(#gd)" stroke="#8B5A00" stroke-width="1.5"/>
+<circle cx="200" cy="96" r="9" fill="#C1121F" stroke="#FBE08A" stroke-width="2"/><circle cx="160" cy="122" r="5" fill="#2E7D32"/><circle cx="240" cy="122" r="5" fill="#2E7D32"/>
+<path d="M128 140 Q200 122 272 140 L270 150 Q200 133 130 150Z" fill="#C1121F"/>
+<!-- eyes -->
+<g fill="#fff" stroke="#2B1610" stroke-width="3"><path d="M155 185 Q172 170 192 185 Q172 194 155 185Z"/><path d="M208 185 Q228 170 245 185 Q228 194 208 185Z"/></g>
+<circle cx="174" cy="183" r="6" fill="#2B1610"/><circle cx="226" cy="183" r="6" fill="#2B1610"/>
+<path d="M150 170 Q172 158 192 168" stroke="#2B1610" stroke-width="3" fill="none"/><path d="M208 168 Q228 158 250 170" stroke="#2B1610" stroke-width="3" fill="none"/>
+<!-- third eye / tilak -->
+<path d="M200 145 Q208 158 200 168 Q192 158 200 145Z" fill="#C1121F"/>
+<path d="M200 192 Q196 215 192 222 Q200 228 208 222" stroke="#B57A4E" stroke-width="2.5" fill="none"/>
+<circle cx="214" cy="218" r="4" fill="none" stroke="url(#gd)" stroke-width="2.5"/>
+<path d="M180 240 Q200 252 220 240 Q200 246 180 240Z" fill="#B3262E"/>
+<g fill="url(#gd)"><circle cx="134" cy="215" r="9"/><circle cx="266" cy="215" r="9"/><path d="M128 222 L140 222 L134 240Z"/><path d="M260 222 L272 222 L266 240Z"/></g>
+<!-- red chunri + necklace -->
+<path d="M90 345 Q120 270 165 262 Q200 290 235 262 Q280 270 310 345 Q200 370 90 345Z" fill="#C1121F"/>
+<path d="M150 272 Q200 320 250 272" stroke="url(#gd)" stroke-width="7" fill="none"/>
+<circle cx="200" cy="305" r="9" fill="#C1121F" stroke="#FBE08A" stroke-width="3"/>
+<path d="M90 345 Q120 270 165 262" stroke="url(#gd)" stroke-width="4" fill="none"/><path d="M310 345 Q280 270 235 262" stroke="url(#gd)" stroke-width="4" fill="none"/>
+<!-- lotus base -->
+<g fill="#F48FB1" stroke="#B8860B" stroke-width="2">
+<path d="M200 330 Q225 370 200 410 Q175 370 200 330Z"/><path d="M200 410 Q150 400 135 355 Q180 365 200 410Z"/><path d="M200 410 Q250 400 265 355 Q220 365 200 410Z"/><path d="M200 412 Q120 420 85 380 Q150 375 200 412Z"/><path d="M200 412 Q280 420 315 380 Q250 375 200 412Z"/></g>
+</svg>
