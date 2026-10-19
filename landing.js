@@ -10,6 +10,7 @@ const phone=()=>{let p=$("#phone").value.replace(/\D/g,"");if(p.length===12&&p.s
 function show(n){step=n;document.querySelectorAll("[data-step]").forEach(d=>d.classList.toggle("hide",+d.dataset.step!==n));
  document.querySelectorAll("#prog div").forEach((d,i)=>d.classList.toggle("on",i<n));$("#back").classList.toggle("hide",n===1);
  $("#next").textContent=n===3?"✅ भुगतान हो गया →":n===4?"🙏 बुकिंग पूरी करें":"आगे बढ़ें →";err();
+ if(n>=3)loadSb().catch(()=>{sbMod=null;});
  if(n===4)$("#sum4").textContent=lbl()+" · संकल्प: "+$("#name").value.trim();
  $("#book").scrollIntoView({behavior:"smooth",block:"start"});}
 function valid(n){if(n===2){if(!$("#name").value.trim()){err("कृपया संकल्प का नाम भरें।");$("#name").focus();return false;}
@@ -17,12 +18,13 @@ function valid(n){if(n===2){if(!$("#name").value.trim()){err("कृपया �
 $("#back").onclick=()=>show(step-1);
 $("#next").onclick=()=>{if(!valid(step))return;if(step<4)return show(step+1);submit();};
 $("#shot").addEventListener("change",e=>{const f=e.target.files[0],pv=$("#preview");err();if(f&&f.type.startsWith("image/")){pv.src=URL.createObjectURL(f);pv.style.display="block";}else{pv.style.display="none";if(f)err("कृपया केवल फ़ोटो (image) चुनें।");}});
+let sbMod=null;const loadSb=()=>sbMod||(sbMod=import("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm"));
 async function submit(){const fl=$("#shot").files[0];
  if(!fl||!fl.type.startsWith("image/"))return err("कृपया भुगतान का स्क्रीनशॉट अपलोड करें।");
  if(fl.size>5*1024*1024)return err("स्क्रीनशॉट 5MB से छोटा होना चाहिए।");
  const d=new Date(),ref="BS-"+String(d.getFullYear()).slice(2)+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0")+"-"+Math.random().toString(36).slice(2,6).toUpperCase().padEnd(4,"X");
  const b=$("#next");b.disabled=true;b.textContent="भेजा जा रहा है…";
- try{const {createClient}=await import("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm");
+ try{const {createClient}=await loadSb();
   const sb=createClient(C.SUPABASE_URL,C.SUPABASE_KEY,{auth:{persistSession:false,autoRefreshToken:false,storageKey:"bs-public"}});
   const ext=((fl.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,"")||"jpg").slice(0,5);
   const path="bookings/"+ref+"/"+crypto.randomUUID()+"."+ext;
@@ -30,7 +32,7 @@ async function submit(){const fl=$("#shot").files[0];
   if(up.error)throw{hi:"स्क्रीनशॉट अपलोड नहीं हो सका, कृपया दोबारा प्रयास करें।"};
   const ins=await sb.from("bs_bookings").insert({booking_ref:ref,seva:"कन्या भोजन / Kanya Bhojan",package:sel.qty+" कन्या पूजन",quantity:sel.qty,amount:sel.price,sankalp_name:$("#name").value.trim(),gotra:$("#gotra").value.trim()||null,phone:phone(),preferred_date:$("#date").value||null,message:(($("#msg").value.trim()||"")+" [landing:kanya-pujan]").trim(),screenshot_path:path});
   if(ins.error)throw{hi:"बुकिंग सहेजी नहीं जा सकी, कृपया दोबारा प्रयास करें।"};
- }catch(x){err((x&&x.hi)||"नेटवर्क समस्या — कृपया दोबारा प्रयास करें।");b.disabled=false;b.textContent="🙏 बुकिंग पूरी करें";return;}
+ }catch(x){if(!(x&&x.hi))sbMod=null;err((x&&x.hi)||"नेटवर्क समस्या — कृपया दोबारा प्रयास करें।");b.disabled=false;b.textContent="🙏 बुकिंग पूरी करें";return;}
  $("#lf").classList.add("hide");$("#prog").classList.add("hide");$("#thanks").classList.remove("hide");$("#ref").textContent=ref;$("#tsum").textContent=lbl()+" · संकल्प: "+$("#name").value.trim();
  $("#sticky").classList.add("off");$("#book").scrollIntoView({block:"start"});window.bsBooked=ref;}
 // sticky CTA hides while booking section is on screen
