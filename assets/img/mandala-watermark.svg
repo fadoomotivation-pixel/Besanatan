@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <radialGradient id="mgold" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C9A227" stop-opacity="0.9"/>
+      <stop offset="70%" stop-color="#7A1E1E" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#C9A227" stop-opacity="0.1"/>
+    </radialGradient>
+  </defs>
+  <g fill="none" stroke="#C9A227" stroke-width="1.5" transform="translate(300,300)" opacity="0.12">
+    <circle r="25" fill="#C9A227" fill-opacity="0.15"/>
+    <circle r="40"/>
+    <circle r="45" stroke-dasharray="2 4"/>
+    <circle r="80"/>
+    <circle r="120"/>
+    <circle r="160" stroke-dasharray="4 6"/>
+    <circle r="200"/>
+    <circle r="240"/>
+    <circle r="270" stroke-dasharray="6 8"/>
+    <circle r="285"/>
+    <g id="petal8">
+      <path d="M0,-40 Q15,-60 0,-80 Q-15,-60 0,-40Z" fill="#C9A227" fill-opacity="0.1"/>
+      <path d="M0,-80 Q30,-100 0,-120 Q-30,-100 0,-80Z" fill="#C9A227" fill-opacity="0.08"/>
+      <path d="M0,-120 Q45,-160 0,-200 Q-45,-160 0,-120Z" fill="#C9A227" fill-opacity="0.06"/>
+      <path d="M0,-200 Q60,-235 0,-270 Q-60,-235 0,-200Z" fill="#C9A227" fill-opacity="0.04"/>
+      <circle cx="0" cy="-277" r="4" fill="#C9A227"/>
+      <line x1="0" y1="-40" x2="0" y2="-270" stroke-width="0.8" stroke-dasharray="3 3"/>
+    </g>
+    <use href="#petal8" transform="rotate(45)"/>
+    <use href="#petal8" transform="rotate(90)"/>
+    <use href="#petal8" transform="rotate(135)"/>
+    <use href="#petal8" transform="rotate(180)"/>
+    <use href="#petal8" transform="rotate(225)"/>
+    <use href="#petal8" transform="rotate(270)"/>
+    <use href="#petal8" transform="rotate(315)"/>
+    <g id="ray16">
+      <path d="M0,-80 C10,-100 10,-140 0,-160 C-10,-140 -10,-100 0,-80Z" fill="#7A1E1E" fill-opacity="0.05"/>
+      <circle cx="0" cy="-160" r="3" fill="#C9A227"/>
+    </g>
+    <use href="#ray16" transform="rotate(22.5)"/>
+    <use href="#ray16" transform="rotate(67.5)"/>
+    <use href="#ray16" transform="rotate(112.5)"/>
+    <use href="#ray16" transform="rotate(157.5)"/>
+    <use href="#ray16" transform="rotate(202.5)"/>
+    <use href="#ray16" transform="rotate(247.5)"/>
+    <use href="#ray16" transform="rotate(292.5)"/>
+    <use href="#ray16" transform="rotate(337.5)"/>
+  </g>
+</svg>
