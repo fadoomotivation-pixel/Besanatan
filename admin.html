@@ -1,0 +1,47 @@
+<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Admin — Be Sanatan</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;700&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.adm{max-width:1100px;margin:auto;padding:16px}.box{background:#fffaf0;border:1px solid var(--gold2);border-radius:10px;padding:16px;margin:12px 0}
+.auth{max-width:380px;margin:20px auto}.tabs button{background:none;border:none;color:var(--mar);font:inherit;font-weight:700;cursor:pointer;margin-right:10px;padding:4px 0}.tabs button.on{border-bottom:2px solid var(--saf)}
+.filters{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.stats{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}.stat{background:#fff;border:1px solid var(--gold2);border-radius:8px;padding:8px;text-align:center}.stat b{display:block;font-size:20px;color:var(--saf)}
+table{width:100%;border-collapse:collapse;font-size:14px;background:#fff}th,td{border-bottom:1px solid #ecd9a8;padding:6px;text-align:left}th{background:var(--mar);color:var(--gold2)}tr.r{cursor:pointer}tr.r:hover{background:#fff3d6}
+.st{padding:1px 8px;border-radius:10px;font-size:12px;color:#fff}.pending{background:#c77700}.verified{background:#1565c0}.completed{background:#2e7d32}.rejected{background:#b00020}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:flex-start;justify-content:center;overflow:auto;z-index:20;padding:16px}.modal .box{max-width:620px;width:100%}
+.modal img{max-width:100%;border:2px solid var(--gold2)}.kv{display:grid;grid-template-columns:130px 1fr;gap:4px 10px;font-size:15px}.kv b{color:var(--mar)}
+.small{font-size:13px}.ok{color:#2e7d32}.tblwrap{overflow-x:auto}
+</style></head><body>
+<div class="shloka">॥ Be Sanatan — Admin ॥</div>
+<header><a href="index.html" class="brand"><img src="logo.svg" alt="Be Sanatan" style="height:60px"></a><nav><span id="who" class="small"></span> <a href="#" id="logout" class="hidden">Logout</a></nav></header>
+<div class="adm">
+<div id="authBox" class="box auth">
+ <div class="tabs"><button data-m="login" class="on">Login</button><button data-m="signup">पहली बार? / Sign up</button><button data-m="forgot">Forgot password</button></div>
+ <form id="authForm">
+  <label>Email</label><input id="em" type="email" required autocomplete="username">
+  <div id="pwWrap"><label>Password</label><input id="pw" type="password" minlength="8" autocomplete="current-password"></div>
+  <button class="btn" style="width:100%;margin-top:12px" id="authBtn">Login</button>
+ </form>
+ <p id="authMsg" class="small"></p>
+</div>
+<div id="resetBox" class="box auth hidden"><h3>नया पासवर्ड सेट करें / Set new password</h3><input id="npw" type="password" minlength="8" placeholder="min 8 characters"><button class="btn" id="setPw" style="width:100%;margin-top:10px">Save password</button><p id="resetMsg" class="small"></p></div>
+<div id="denied" class="box hidden" style="text-align:center"><h2>प्रवेश वर्जित / Access denied</h2><p>यह खाता एडमिन नहीं है। This account is not a Be Sanatan admin.</p></div>
+<div id="dash" class="hidden">
+ <div class="stats" id="stats"></div>
+ <div class="box filters">
+  <select id="fStatus"><option value="">सभी स्थिति / All status</option><option>pending</option><option>verified</option><option>completed</option><option>rejected</option></select>
+  <select id="fSeva"><option value="">सभी सेवा / All seva</option></select>
+  <input id="fFrom" type="date" title="From"><input id="fTo" type="date" title="To">
+  <input id="fQ" placeholder="नाम / फ़ोन / Ref खोजें">
+  <button class="btn alt" id="csv" type="button">Export CSV</button>
+ </div>
+ <p class="small"><span id="count"></span> · <a href="#" id="reload">Refresh</a></p>
+ <div class="tblwrap"><table><thead><tr><th>तिथि</th><th>Ref</th><th>नाम</th><th>फ़ोन</th><th>सेवा</th><th>राशि</th><th>स्थिति</th></tr></thead><tbody id="rows"></tbody></table></div>
+</div>
+</div>
+<div id="modal" class="modal hidden"><div class="box" id="mbody"></div></div>
+<script src="config.js"></script>
+<script type="module" src="admin.js"></script>
+</body></html>

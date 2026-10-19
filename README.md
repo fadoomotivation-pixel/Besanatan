@@ -12,7 +12,6 @@ Static booking site for Kanya Bhojan & Hindu daan/seva performed in the devotee'
 ## मालिक को भरना है / Owner must fill (config.js)
 | Key | क्या / What |
 |---|---|
-| `WEB3FORMS_KEY` | web3forms.com से मुफ़्त key (अपना ईमेल डालें) — बिना इसके बुकिंग आप तक नहीं पहुँचेगी / without it bookings are NOT delivered |
 | `PHONE_DISPLAY` | संपर्क नंबर / contact phone |
 | `EMAIL` | ईमेल |
 | `ADDRESS` | पता |
@@ -22,8 +21,17 @@ Static booking site for Kanya Bhojan & Hindu daan/seva performed in the devotee'
 कोई testimonial, registration no. या आँकड़े नहीं डाले गए — केवल असली जानकारी जोड़ें। (No fake testimonials/stats.)
 
 ## बुकिंग कैसे पहुँचती है / How bookings arrive
-फ़ॉर्म सबमिट होने पर (name, phone, gotra, seva, package, amount, date, message, booking ref + screenshot) Web3Forms को multipart POST होता है और आपके ईमेल पर आता है। प्रमाण ग्राहक के दिए नंबर/ईमेल पर भेजें।
-Note: Web3Forms free plan does NOT accept file uploads (Pro feature). The site tries with the screenshot first; if rejected it sends details only and asks the customer (in Hindi) to keep the screenshot. Upgrade Web3Forms to Pro to receive screenshots.
+बुकिंग व भुगतान स्क्रीनशॉट Supabase (SalesAutoCall project, isolated `bs_*` tables) में सहेजे जाते हैं।
+- Table `public.bs_bookings`, private bucket `bs-payment-screenshots`, admin list `public.bs_admins`
+- `config.js` में `SUPABASE_URL` + `SUPABASE_KEY` (publishable key — public by design; RLS lets visitors only INSERT)
+- Admin panel: **`/admin.html`** (not linked publicly, noindex). Login / sign up / forgot password → bookings list, filters, totals, screenshot (signed URL), status + note, CSV export.
+- नया एडमिन जोड़ने के लिए / Add another admin (Supabase SQL editor): `insert into public.bs_admins(email) values ('name@example.com');` (lowercase)
+- Schema: `supabase/migrations/`
+
+### पहली बार एडमिन सेटअप / First-time admin setup
+1. Supabase dashboard → Authentication → URL Configuration → **Redirect URLs** में जोड़ें (Site URL मत बदलें, वह SalesAutoCall का है): `https://www.besanatan.com/admin.html`, `https://besanatan.vercel.app/admin.html`
+2. https://www.besanatan.com/admin.html → "पहली बार? / Sign up" → Musicofmajor@gmail.com + password
+3. ईमेल में confirm link दबाएँ → फिर Login करें।
 
 ## मुफ़्त डिप्लॉय / Free deploy
 - **Netlify:** app.netlify.com/drop पर फ़ोल्डर/ZIP drag-drop करें।

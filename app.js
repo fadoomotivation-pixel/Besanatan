@@ -17,7 +17,6 @@ else{const s=C.SEVAS.find(x=>x.id===seva.value);const n=Math.max(1,parseInt(qty.
 $("#total").textContent=inr(t);$("#payAmt").textContent=inr(t);return{t,label};}
 [seva,pkg,qty].forEach(e=>e.addEventListener("input",calc));calc();window.__bsCalc=calc;
 $("#shot").addEventListener("change",e=>{const fl=e.target.files[0];const pv=$("#preview");if(fl&&fl.type.startsWith("image/")){pv.src=URL.createObjectURL(fl);pv.style.display="block";}else pv.style.display="none";});
-if(!C.WEB3FORMS_KEY&&/^(localhost|127\.|0\.0)/.test(location.hostname))$("#devNotice").classList.remove("hidden");
 f.addEventListener("submit",async e=>{e.preventDefault();const er=$("#formErr");er.textContent="";
 let ph=$("#phone").value.replace(/\D/g,"");if(ph.length===12&&ph.startsWith("91"))ph=ph.slice(2);
 if(!/^[6-9]\d{9}$/.test(ph)){er.textContent="कृपया सही 10 अंकों का मोबाइल नंबर डालें / Enter a valid 10-digit Indian mobile number";return;}
@@ -25,12 +24,18 @@ if(!$("#name").value.trim()){er.textContent="संकल्प नाम आव
 const fl=$("#shot").files[0];if(!fl||!fl.type.startsWith("image/")){er.textContent="भुगतान का स्क्रीनशॉट (image) अपलोड करें / Upload payment screenshot";return;}
 const {t,label}=calc(),d=new Date(),ref="BS-"+String(d.getFullYear()).slice(2)+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0")+"-"+Math.random().toString(36).slice(2,6).toUpperCase();
 const btn=$("#submitBtn");btn.disabled=true;btn.textContent="भेजा जा रहा है…";
-let noAttach=false;
-if(C.WEB3FORMS_KEY){const base={access_key:C.WEB3FORMS_KEY,subject:"नई बुकिंग "+ref+" — "+label,from_name:"Be Sanatan Website",booking_ref:ref,name:$("#name").value,phone:ph,gotra:$("#gotra").value,seva:seva.options[seva.selectedIndex].text,package:label,amount:inr(t),date:$("#date").value,message:$("#msg").value};
-const send=async(withFile)=>{const fd=new FormData();Object.entries(base).forEach(([k,v])=>fd.append(k,v));if(withFile)fd.append("attachment",fl);else fd.append("screenshot_note","Screenshot not attached (upload failed) — ask customer to share it");const r=await fetch("https://api.web3forms.com/submit",{method:"POST",body:fd});return r.json();};
-let ok=false;try{ok=(await send(true)).success;}catch(x){}
-if(!ok){try{ok=(await send(false)).success;noAttach=ok;}catch(x){}}
-if(!ok){er.textContent="भेजने में समस्या हुई, कृपया दोबारा प्रयास करें / Submission failed, please retry.";btn.disabled=false;btn.textContent="बुकिंग भेजें";return;}}
+try{const {createClient}=await import("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm");
+const sb=createClient(C.SUPABASE_URL,C.SUPABASE_KEY,{auth:{persistSession:false,autoRefreshToken:false,storageKey:"bs-public"}});
+const ext=((fl.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,"")||"jpg").slice(0,5);
+if(fl.size>5*1024*1024){throw {hi:"स्क्रीनशॉट 5MB से छोटा होना चाहिए / Screenshot must be under 5MB"};}
+const path="bookings/"+ref+"/"+crypto.randomUUID()+"."+ext;
+const up=await sb.storage.from(C.SCREENSHOT_BUCKET).upload(path,fl,{contentType:fl.type||"image/jpeg",upsert:false});
+if(up.error)throw {hi:"स्क्रीनशॉट अपलोड नहीं हो सका, कृपया दोबारा प्रयास करें / Screenshot upload failed, please retry."};
+const isK=seva.value==="kanya",kp=C.KANYA_PACKAGES.find(x=>x.id===pkg.value);
+const row={booking_ref:ref,seva:seva.options[seva.selectedIndex].text,package:label,quantity:isK?kp.qty:Math.max(1,parseInt(qty.value)||1),amount:t,sankalp_name:$("#name").value.trim(),gotra:$("#gotra").value.trim()||null,phone:ph,preferred_date:$("#date").value||null,message:$("#msg").value.trim()||null,screenshot_path:path};
+const ins=await sb.from("bs_bookings").insert(row);
+if(ins.error)throw {hi:"बुकिंग सहेजी नहीं जा सकी, कृपया दोबारा प्रयास करें / Booking could not be saved, please retry."};
+}catch(x){er.textContent=(x&&x.hi)||"नेटवर्क समस्या, कृपया दोबारा प्रयास करें / Network error, please retry.";btn.disabled=false;btn.textContent="बुकिंग भेजें / Submit Booking";return;}
 f.classList.add("hidden");$("#payBox").classList.add("hidden");$("#thanks").classList.remove("hidden");
-$("#ref").textContent=ref;$("#tSum").textContent=label+" · "+inr(t);$("#keepShot").classList.toggle("hidden",!noAttach);scrollTo(0,0);});
+$("#ref").textContent=ref;$("#tSum").textContent=label+" · "+inr(t);scrollTo(0,0);});
 })();
