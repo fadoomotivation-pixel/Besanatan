@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 360" role="img" aria-label="Be Sanatan logo">
+<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D27A"/><stop offset="1" stop-color="#B8860B"/></linearGradient>
+<radialGradient id="f" cx=".5" cy=".7" r=".6"><stop offset="0" stop-color="#FFF6C2"/><stop offset=".5" stop-color="#FFB627"/><stop offset="1" stop-color="#E85D04"/></radialGradient></defs>
+<text x="160" y="42" text-anchor="middle" font-family="'Tiro Devanagari Hindi',serif" font-size="38" fill="#B8860B">ॐ</text>
+<g fill="none" stroke="url(#g)" stroke-width="4" stroke-linejoin="round">
+<path d="M160 70 C185 105 185 150 160 180 C135 150 135 105 160 70Z"/>
+<path d="M160 180 C120 165 100 130 105 95 C135 110 152 140 160 180Z"/>
+<path d="M160 180 C200 165 220 130 215 95 C185 110 168 140 160 180Z"/>
+<path d="M160 182 C110 185 75 160 62 130 C100 128 135 150 160 182Z"/>
+<path d="M160 182 C210 185 245 160 258 130 C220 128 185 150 160 182Z"/>
+</g>
+<path d="M160 104 C174 122 172 140 160 150 C148 140 146 122 160 104Z" fill="url(#f)"/>
+<path d="M118 158 Q160 192 202 158 L196 172 Q160 200 124 172Z" fill="url(#g)"/>
+<rect x="150" y="186" width="20" height="8" rx="2" fill="#B8860B"/>
+<text x="160" y="262" text-anchor="middle" font-family="'Noto Serif Devanagari',Georgia,serif" font-weight="700" font-size="44" fill="#7A1F1F">Be Sanatan</text>
+<text x="160" y="300" text-anchor="middle" font-family="'Tiro Devanagari Hindi',serif" font-size="22" fill="#B8860B">सेवा · श्रद्धा · संस्कार</text>
+</svg>
