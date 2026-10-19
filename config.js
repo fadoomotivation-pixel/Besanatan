@@ -1,9 +1,6 @@
 /* ===== Be Sanatan — सारी जानकारी यहीं बदलें / Edit everything here ===== */
 window.BS_CONFIG = {
   BRAND: "Be Sanatan",
-  PHONE_DISPLAY: "+91 XXXXX XXXXX",     // TODO
-  EMAIL: "TODO@example.com",            // TODO
-  ADDRESS: "पता यहाँ लिखें / Address to be added", // TODO
   SUPABASE_URL: "https://rqgkzamuohdvttnkluzn.supabase.co",
   SUPABASE_KEY: "sb_publishable_jbinu2H4JrpqAUp_3Prdpw_8pZzE58N", // publishable key — public by design, protected by RLS
   SCREENSHOT_BUCKET: "bs-payment-screenshots",

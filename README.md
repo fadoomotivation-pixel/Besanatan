@@ -4,19 +4,18 @@
 Static booking site for Kanya Bhojan & Hindu daan/seva performed in the devotee's name.
 
 ## फ़ाइलें / Files
-- `index.html` — होम (hero, how it works, packages, sevas, trust, gallery, FAQ, contact)
+- `kanya-pujan.html` — **Meta ads landing page** (one page: package → details → QR pay → screenshot upload). Ad URL: `https://www.besanatan.com/kanya-pujan.html`
+- No public contact info is shown anywhere on the site (by owner's choice).
+- `index.html` — होम (hero, how it works, packages, sevas, trust, gallery, FAQ)
 - `booking.html` — बुकिंग फ़ॉर्म, UPI QR, स्क्रीनशॉट अपलोड, धन्यवाद + Booking Ref (BS-YYMMDD-XXXX)
 - `config.js` — **सारी जानकारी व रेट यहीं बदलें / edit all info & rates here**
-- `app.js`, `style.css`, `logo.svg`, `favicon.svg`, `assets/upi-qr.jpg` (असली QR / real QR), `assets/gallery/` (फ़ोटो यहाँ)
+- `app.js`, `style.css`, `logo.svg`, `favicon.svg`, `assets/upi-qr.jpg` (असली QR / real QR), `assets/img/` (images)
 
 ## मालिक को भरना है / Owner must fill (config.js)
 | Key | क्या / What |
 |---|---|
-| `PHONE_DISPLAY` | संपर्क नंबर / contact phone |
-| `EMAIL` | ईमेल |
-| `ADDRESS` | पता |
 | `SEVAS[].price` | अन्य सेवाओं के सुझाए रेट जाँचें / verify suggested seva rates |
-| Gallery | `index.html` में PLACEHOLDER बॉक्स को असली फ़ोटो (`assets/gallery/`) से बदलें |
+| Gallery | असली सेवा की अपनी फ़ोटो (बिना बच्चों के चेहरे) `assets/img/` में डालें / add your own real seva photos |
 
 कोई testimonial, registration no. या आँकड़े नहीं डाले गए — केवल असली जानकारी जोड़ें। (No fake testimonials/stats.)
 
